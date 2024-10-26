@@ -15,10 +15,15 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final halfHeightOfCurrentDevice = MediaQuery.of(context).size.height / 2;
     return MultiBlocProvider(
       providers: [
-        BlocProvider(create: (context) => BlueClicker(),),
-        BlocProvider(create: (context) => RedClicker(),)
+        BlocProvider(
+          create: (context) => BlueClicker(halfHeightOfCurrentDevice),
+        ),
+        BlocProvider(
+          create: (context) => RedClicker(halfHeightOfCurrentDevice),
+        )
       ],
       child: const MaterialApp(
         debugShowCheckedModeBanner: false,
