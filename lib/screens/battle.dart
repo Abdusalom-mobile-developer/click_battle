@@ -21,43 +21,32 @@ class BattleScreen extends StatelessWidget {
           title: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Container(
-                padding: EdgeInsets.symmetric(
-                    horizontal: MediaQuery.of(context).size.width / 27),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
-                  color: winner == "Blue" ? Colors.blue[800] : Colors.red[900],
-                ),
-                child: Text(
-                  winner,
-                  style: const TextStyle(color: Colors.white, fontSize: 29),
-                ),
-              ),
-              SizedBox(
-                width: MediaQuery.of(context).size.width / 30,
-              ),
-              const Text(
-                "Wins 🎉",
-                style: TextStyle(color: Colors.white, fontSize: 29),
+              Text(
+                "${winner == "Blue" ? "🔵" : "🔴"} Wins 🎉",
+                style: const TextStyle(color: Colors.white, fontSize: 29),
               ),
             ],
           ),
-          content: SizedBox(
-            height: MediaQuery.of(context).size.width / 6,
+          content: const Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text("Click restart to start over.",
+                  style: TextStyle(color: Colors.white, fontSize: 16)),
+            ],
           ),
           actions: [
             Container(
-              decoration: BoxDecoration(shape: BoxShape.circle,  color: winner == "Blue" ? Colors.blue[800] : Colors.red[900]),
-              child: GestureDetector(
-                  onTap: () {
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(13),
+                  color: winner == "Blue" ? Colors.blue[800] : Colors.red[900]),
+              child: TextButton(
+                  onPressed: () {
                     BlocProvider.of<RedClicker>(context).restart();
                     BlocProvider.of<BlueClicker>(context).restart();
                     Navigator.pop(context);
                   },
-                  child: Icon(Icons.refresh_outlined,
-                      size: MediaQuery.of(context).size.width / 10,
-                      color:
-                         Colors.white)),
+                  child: const Text("Restart",
+                      style: TextStyle(color: Colors.white, fontSize: 18))),
             )
           ],
         ),
