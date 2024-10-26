@@ -12,6 +12,7 @@ class BattleScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     void showAlertDialog(String winner) {
       showDialog(
+        barrierColor: Colors.black26,
         context: context,
         barrierDismissible: false,
         builder: (context) => AlertDialog(
@@ -22,7 +23,7 @@ class BattleScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                "${winner == "Blue" ? "🔵" : "🔴"} Wins 🎉",
+                "${winner == "Blue" ? "🔵" : "🔴"} Wins!",
                 style: const TextStyle(color: Colors.white, fontSize: 29),
               ),
             ],
@@ -31,7 +32,7 @@ class BattleScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text("Click restart to start over.",
-                  style: TextStyle(color: Colors.white, fontSize: 16)),
+                  style: TextStyle(color: Colors.white, fontSize: 17)),
             ],
           ),
           actions: [
@@ -64,7 +65,7 @@ class BattleScreen extends StatelessWidget {
                       behavior: HitTestBehavior.opaque,
                       onTap: () {
                         BlocProvider.of<BlueClicker>(context).increment();
-                        if (state < 1) {
+                        if (state == 0) {
                           showAlertDialog("Blue");
                         }
                       },
@@ -83,13 +84,18 @@ class BattleScreen extends StatelessWidget {
                       ),
                     )),
           ),
+          const Divider(
+            thickness: 6,
+            color: Colors.black,
+            height: 4,
+          ),
           Expanded(
             child: BlocBuilder<RedClicker, double>(
                 builder: (context, state) => GestureDetector(
                       behavior: HitTestBehavior.opaque,
                       onTap: () {
                         BlocProvider.of<RedClicker>(context).increment();
-                        if (state < 1) {
+                        if (state == 0) {
                           showAlertDialog("Red");
                         }
                       },
