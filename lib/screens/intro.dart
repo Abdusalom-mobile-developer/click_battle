@@ -1,5 +1,7 @@
+import 'package:click_battle/main.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:go_router/go_router.dart';
 
 class IntroScreen extends StatelessWidget {
   const IntroScreen({super.key});
@@ -101,7 +103,9 @@ class IntroScreen extends StatelessWidget {
                                 Colors.red[800]!,
                               ])),
                       child: TextButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          context.go("/battle_screen");
+                        },
                         child: Text(
                           "Start",
                           style: TextStyle(
