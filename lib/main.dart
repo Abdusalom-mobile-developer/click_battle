@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final halfHeightOfCurrentDevice =
-        MediaQuery.of(context).size.height / 2 - 2;
+        MediaQuery.of(context).size.height / 2 - MediaQuery.of(context).size.width * 0.005;
     return MultiBlocProvider(
       providers: [
         BlocProvider(

@@ -10,6 +10,8 @@ class BattleScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double screenWidth = MediaQuery.of(context).size.width;
+    // Method that show the winner and helps to restart the game.
     void showAlertDialog(String winner) {
       showDialog(
         barrierColor: Colors.black26,
@@ -24,15 +26,18 @@ class BattleScreen extends StatelessWidget {
             children: [
               Text(
                 "${winner == "Blue" ? "🔵" : "🔴"} Wins!",
-                style: const TextStyle(color: Colors.white, fontSize: 29),
+                style:  TextStyle(color: Colors.white, fontSize: screenWidth * 0.075),
+              ),
+              SizedBox(
+                width: screenWidth * 0.028,
               ),
             ],
           ),
-          content: const Row(
+          content: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text("Click restart to start over.",
-                  style: TextStyle(color: Colors.white, fontSize: 17)),
+                  style: TextStyle(color: Colors.white, fontSize: screenWidth * 0.045)),
             ],
           ),
           actions: [
@@ -42,12 +47,13 @@ class BattleScreen extends StatelessWidget {
                   color: winner == "Blue" ? Colors.blue[800] : Colors.red[900]),
               child: TextButton(
                   onPressed: () {
+                    // Restarting button which helps to start the game over.
                     BlocProvider.of<RedClicker>(context).restart();
                     BlocProvider.of<BlueClicker>(context).restart();
                     Navigator.pop(context);
                   },
-                  child: const Text("Restart",
-                      style: TextStyle(color: Colors.white, fontSize: 18))),
+                  child:  Text("Restart",
+                      style: TextStyle(color: Colors.white, fontSize: screenWidth * 0.046))),
             )
           ],
         ),
@@ -59,6 +65,7 @@ class BattleScreen extends StatelessWidget {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
+          // Blue Player's Side
           Expanded(
             child: BlocBuilder<BlueClicker, double>(
                 builder: (context, state) => GestureDetector(
@@ -84,11 +91,13 @@ class BattleScreen extends StatelessWidget {
                       ),
                     )),
           ),
-          const Divider(
-            thickness: 6,
+          // Line in the center of the Screen
+           Divider(
+            thickness: screenWidth * 0.015,
             color: Colors.black,
-            height: 4,
+            height: screenWidth * 0.01,
           ),
+          // Red Player's Side
           Expanded(
             child: BlocBuilder<RedClicker, double>(
                 builder: (context, state) => GestureDetector(
