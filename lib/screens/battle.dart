@@ -27,7 +27,8 @@ class BattleScreen extends StatelessWidget {
             children: [
               Text(
                 "${winner == "Blue" ? "🔵" : "🔴"} Wins!",
-                style:  TextStyle(color: Colors.white, fontSize: screenWidth * 0.075),
+                style: TextStyle(
+                    color: Colors.white, fontSize: screenWidth * 0.075),
               ),
               SizedBox(
                 width: screenWidth * 0.028,
@@ -38,7 +39,8 @@ class BattleScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text("Click restart to start over.",
-                  style: TextStyle(color: Colors.white, fontSize: screenWidth * 0.045)),
+                  style: TextStyle(
+                      color: Colors.white, fontSize: screenWidth * 0.045)),
             ],
           ),
           actions: [
@@ -53,8 +55,9 @@ class BattleScreen extends StatelessWidget {
                     BlocProvider.of<BlueClicker>(context).restart();
                     Navigator.pop(context);
                   },
-                  child:  Text("Restart",
-                      style: TextStyle(color: Colors.white, fontSize: screenWidth * 0.046))),
+                  child: Text("Restart",
+                      style: TextStyle(
+                          color: Colors.white, fontSize: screenWidth * 0.046))),
             )
           ],
         ),
@@ -72,10 +75,10 @@ class BattleScreen extends StatelessWidget {
                 builder: (context, state) => GestureDetector(
                       behavior: HitTestBehavior.opaque,
                       onTap: () {
-                        BlocProvider.of<BlueClicker>(context).increment();
-                        if (state == 0) {
+                        if (state < screenWidth * 0.05) {
                           showAlertDialog("Blue");
                         }
+                        BlocProvider.of<BlueClicker>(context).increment();
                       },
                       child: Column(
                         children: [
@@ -93,7 +96,7 @@ class BattleScreen extends StatelessWidget {
                     )),
           ),
           // Line in the center of the Screen
-           Divider(
+          Divider(
             thickness: screenWidth * 0.015,
             color: Colors.black,
             height: screenWidth * 0.01,
@@ -104,10 +107,10 @@ class BattleScreen extends StatelessWidget {
                 builder: (context, state) => GestureDetector(
                       behavior: HitTestBehavior.opaque,
                       onTap: () {
-                        BlocProvider.of<RedClicker>(context).increment();
-                        if (state == 0) {
+                        if (state < screenWidth * 0.05) {
                           showAlertDialog("Red");
                         }
+                        BlocProvider.of<RedClicker>(context).increment();
                       },
                       child: Column(
                         children: [
