@@ -14,7 +14,6 @@ dependencies:
   cupertino_icons: ^1.0.8
   flutter_bloc: ^8.1.6
   bloc: ^8.1.4
-  flutter_screenutil: ^5.9.3
   font_awesome_flutter: ^10.7.0
 
 dev_dependencies:
@@ -37,4 +36,4 @@ flutter:
   fonts:
     - family: Permanent-Marker
       fonts:
-        - asset: fonts/Permanent_Marker.ttf
+        - asset: assets/fonts/Permanent_Marker.ttf

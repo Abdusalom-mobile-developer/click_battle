@@ -10,6 +10,7 @@ class BattleScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // The width of the current Device.
     double screenWidth = MediaQuery.of(context).size.width;
     // Method that show the winner and helps to restart the game.
     void showAlertDialog(String winner) {

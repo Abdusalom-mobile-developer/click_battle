@@ -1,6 +1,6 @@
 import 'package:click_battle/block/blue_clicker.dart';
 import 'package:click_battle/block/red_clicker.dart';
-import 'package:click_battle/screens/battle.dart';
+import 'package:click_battle/screens/intro.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
       ],
       child: const MaterialApp(
         debugShowCheckedModeBanner: false,
-        home: BattleScreen(),
+        home: IntroScreen(),
       ),
     );
   }
