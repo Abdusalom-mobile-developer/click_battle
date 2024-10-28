@@ -3,10 +3,15 @@ import 'package:click_battle/block/red_clicker.dart';
 import 'package:click_battle/screens/battle.dart';
 import 'package:click_battle/screens/intro.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
-void main() => runApp(const MyApp());
+void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
+  runApp(const MyApp());
+}
 
 final GoRouter router = GoRouter(initialLocation: "/", routes: [
   GoRoute(

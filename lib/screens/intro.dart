@@ -1,4 +1,3 @@
-import 'package:click_battle/main.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
@@ -19,7 +18,7 @@ class IntroScreen extends StatelessWidget {
               alignment: Alignment.topRight,
               child: Transform.rotate(
                 angle: 9,
-                child: Icon(
+                child: Icon(   
                   Icons.cloud,
                   color: Colors.blue[800],
                   size: screenWidth / 1.3,
